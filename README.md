@@ -39,7 +39,7 @@ jobs:
       - uses: cridertechnologies/backpatch-action@v1
         with:
           api-key: ${{ secrets.BACKPATCH_API_KEY }}
-          # Recommended marketing / first-run path
+          # Recommended first-run path
           fail-on: never   # report-only — you review; you decide
 ```
 
