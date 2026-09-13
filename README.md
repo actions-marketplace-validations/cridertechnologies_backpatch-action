@@ -9,6 +9,18 @@ when one has stopped doing work — `npm audit` stays quiet precisely *because* 
 override is there. This Action asks that question on a schedule, or on the
 dependency-bump PRs that are most likely to have made an override redundant.
 
+## Try Backpatch (report-only)
+
+Know when a security override **may no longer be needed**. Backpatch reports which overrides look `SafeToRemove` when an upstream parent already ships the fixed transitive — **report in CI, you decide**.
+
+Default Action path: `fail-on: never` (report-only). Review before you delete — not a delete guarantee.
+
+**After-only example:** `@sailshq/request@2.88.3` + exact `tough-cookie@4.1.3` → `SafeToRemove`, while Pastoralist `--remove-unused` still keeps the pin.
+
+- [Start Pro trial — $15/mo](https://backpatch.dev/subscribe?plan=pro&utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action)
+- [Get Team — $50/mo](https://backpatch.dev/subscribe?plan=team&utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action)
+- [Getting started](https://backpatch.dev/getting-started?utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action) · [Compare vs Dependabot/Renovate/Snyk](https://backpatch.dev/compare?utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action)
+
 ## Usage
 
 ```yaml
@@ -27,6 +39,8 @@ jobs:
       - uses: cridertechnologies/backpatch-action@v1
         with:
           api-key: ${{ secrets.BACKPATCH_API_KEY }}
+          # Recommended marketing / first-run path
+          fail-on: never   # report-only — you review; you decide
 ```
 
 The result lands in the job summary. Nothing fails by default — see
@@ -77,7 +91,7 @@ comment on the PR, or gate a merge:
 
 | Input | Default | Description |
 | --- | --- | --- |
-| `api-key` | *(required)* | Your Backpatch API key. Every request needs one — [start a 14-day trial](https://backpatch.dev/#pricing). Pass it from a secret, never inline. |
+| `api-key` | *(required)* | Your Backpatch API key. Every request needs one — [start a 14-day trial](https://backpatch.dev/subscribe?plan=pro&utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action). Pass it from a secret, never inline. |
 | `working-directory` | `.` | Directory the other paths resolve against. Use it for a monorepo package. |
 | `package-json` | `package.json` | Manifest to analyze, relative to `working-directory`. |
 | `lockfile` | *(none)* | Optional `package-lock.json` or `yarn.lock`. Improves precision. |
