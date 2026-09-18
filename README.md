@@ -17,6 +17,7 @@ Default Action path: `fail-on: never` (report-only). Review before you delete �
 
 **After-only example:** `@sailshq/request@2.88.3` + exact `tough-cookie@4.1.3` → `SafeToRemove`, while Pastoralist `--remove-unused` still keeps the pin.
 
+- [5-min Action quickstart](https://backpatch.dev/action?utm_source=github&utm_medium=action_readme&utm_campaign=action_try) — `fail-on: never` → Pro trial
 - [Start Pro trial — $15/mo](https://backpatch.dev/subscribe?plan=pro&utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action)
 - [Get Team — $50/mo](https://backpatch.dev/subscribe?plan=team&utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action)
 - [Getting started](https://backpatch.dev/getting-started?utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action) · [Compare vs Dependabot/Renovate/Snyk](https://backpatch.dev/compare?utm_source=github&utm_medium=action_readme&utm_campaign=backpatch_action)
